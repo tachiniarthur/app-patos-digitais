@@ -32,7 +32,7 @@ const submit = () => {
 
 <template>
     <GuestLayout>
-        <Head title="Login" />
+        <Head title="Login"></Head>
 
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
             {{ status }}
@@ -56,7 +56,7 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password" value="Password" />
+                <InputLabel for="password" value="Senha" />
 
                 <TextInput
                     id="password"
@@ -70,10 +70,10 @@ const submit = () => {
                 <InputError class="mt-2" :message="form.errors.password" />
             </div>
 
-            <div class="flex mt-4">
+            <div class="flex mt-4 justify-between">
                 <label class="flex items-center">
                     <Checkbox name="remember" v-model:checked="form.remember" />
-                    <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">Remember me</span>
+                    <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">Lembrar de mim</span>
                 </label>
                 
                 <Link
@@ -86,19 +86,17 @@ const submit = () => {
             </div>
 
             <div class="flex flex-col items-center justify-center mt-4 gap-3">
+                <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                    Login
+                </PrimaryButton>
 
                 <SecondaryButton
-                    class="ms-4"
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                     :href="route('register')"
                 >
                     Registre-se
                 </SecondaryButton>
-
-                <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Login
-                </PrimaryButton>
             </div>
         </form>
     </GuestLayout>
